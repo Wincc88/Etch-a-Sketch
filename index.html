@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css">
+
+
 </head>
 <body>
-    <div id="btncontainer">
+    <div id="container">
     </div>
 
 
     <script>
+        console.log("hi");
+
+        container = document.querySelector("#container");
+
+        const content = document.createElement("div");
+        content.classList.add("content");
+        content.textContent = "d1";
+        container.appendChild(content);
+
+        container = document.querySelector("#container");
+
+        const content2 = document.createElement("div");
+        content.classList.add("content2");
+        content.textContent = "d2";
+
+        container.appendChild(content2);
+
+
+
     </script>
 </body>
 </html>
