@@ -1,9 +1,9 @@
 #container {
-    border: 5px solid green;
+    border: 5px solid greenyellow;
     margin-top: 50px;
     margin-bottom: 150px;
-    /*margin-left: 30%;  /* The margin to the left will have some buttons later. */
-    padding: 10px; 
+    /*margin-left: 30%;  /* The margin to the left or bottom or top will have some buttons later. */
+    padding: 5px; 
     display: flex; 
     align-items: center;
     justify-content: center;
@@ -12,15 +12,16 @@
   }
 
   .content {
-    border: 2px solid pink; 
-    width: 78px; /* find best px numner to wrap evenly */
-    height: 50px;
+    border: 1px solid gainsboro; 
+    /*width: 50px; /* find best px numner to wrap evenly -- we use flx-basis instead */
+    height: 25px;
     display: flex;
+    flex-basis: 5%; /* either this or use width -- flex-basis is for length aka width */
     /*flex-direction: column; /*used to make the 2 divs in it sit on top eachother*/
     align-items: center; /* move items inside div to top or bottom-- d4, d9 etc */
     justify-content: center; /* move items in div to right or left */
     /*margin: 0.2px; /* used here to move the boxes close to eachother. */
-    padding: 5px; 
-    
+    padding: 6px; 
+    background-color: black; 
   }
   
