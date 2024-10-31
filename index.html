@@ -11,7 +11,7 @@
 <body>
     <div id="container">
     </div>
-
+    
 
     <script>
         console.log("hi");
@@ -21,16 +21,26 @@
              const content = document.createElement("div");
              content.classList.add("content", "content" + i);
              container.appendChild(content);
+             content.setAttribute("style", "background: white;");    
         }
- 
-        /*
-        const container = document.querySelector("#container");
-        const content = document.createElement("div");
-        content.classList.add("content");
-        content.textContent = "d1";
-        container.appendChild(content);
         
+        const content = document.querySelectorAll(".content");    /*like RockScisPap, QueryselectorAll helped select each div of the many divs*/
+                                                                 /*forEach lopps through all content div displaying events */
+        content.forEach((content) => {
+            
+        content.addEventListener("mouseover", () => {
+            content.setAttribute("style", "background: black;");
+        });
 
+        content.addEventListener("mouseout", () => {
+            content.setAttribute("style", "background: blue;");
+        });
+
+        });
+
+
+
+        /*
         const container2 = document.querySelector("#container");
         const content2 = document.createElement("div");
         content2.classList.add("content2");
