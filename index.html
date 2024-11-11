@@ -9,35 +9,62 @@
 
 </head>
 <body>
+
+    <div>
+        <button id="newgrid">Click to insert number of squares</button>
+    </div>
+
     <div id="container">
     </div>
     
 
     <script>
         console.log("hi");
-
-        const container = document.querySelector("#container");
-        for (let i = 0; i < 256; i++) {
-             const content = document.createElement("div");
-             content.classList.add("content", "content" + i);
-             container.appendChild(content);
-             content.setAttribute("style", "background: white;");    
-        }
         
-        const content = document.querySelectorAll(".content");    /*like RockScisPap, QueryselectorAll helped select each div of the many divs*/
-                                                                 /*forEach lopps through all content div displaying events */
-        content.forEach((content) => {
+        const container = document.querySelector("#container");
+        let n = 16;                               /* manipulate as prompt changing value later. */
+
+        for (let i = 0; i < n; i++) {
+            const ColContent = document.createElement("div");
+            ColContent.classList.add("ColContent");
+           
             
-        content.addEventListener("mouseover", () => {
-            content.setAttribute("style", "background: black;");
+            for (let j = 0; j < n; j++) {
+                const RowContent = document.createElement("div");
+                RowContent.classList.add("RowContent");
+                ColContent.appendChild(RowContent);
+                RowContent.setAttribute("style", "background: pink;");    
+            }
+            container.appendChild(ColContent);
+        } 
+
+       
+
+        
+
+        
+        const RowContent = document.querySelectorAll(".RowContent");    /*like RockScisPap, QueryselectorAll helped select each div of the many divs*/
+                                                                 /*forEach lopps through all content div displaying events */
+        RowContent.forEach((RowContent) => {
+            
+        RowContent.addEventListener("mouseover", () => {
+            RowContent.setAttribute("style", "background: black;");
         });
 
-        content.addEventListener("mouseout", () => {
-            content.setAttribute("style", "background: blue;");
+        RowContent.addEventListener("mouseout", () => {
+            RowContent.setAttribute("style", "background: blue;");
         });
 
         });
+        
+        
 
+        const newgrid = document.querySelector("#newgrid");
+        newgrid.addEventListener("click", () => {
+                alert("hello");
+                prompt("enter new grid number");
+        });
+    
 
 
         /*
