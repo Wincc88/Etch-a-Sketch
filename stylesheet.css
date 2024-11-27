@@ -5,35 +5,6 @@
 }
 
 
-#sdfcontainer {
-    border: 5px solid greenyellow; 
-    width: auto;
-    height: auto; /*allows border line wrap if there is a width given.*/
-    margin: auto; /*centers the div */
-    margin-top: 50px; 
-    margin-bottom: 50px; 
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; /* makes the inner solid gainsboro divs wrap in column*/
-    /*gap: 2px; */
-  }
-
-  
-  .sdfcontent {
-    border: 1px solid gainsboro;  
-    /*width: auto;  find best px numner to wrap evenly -- we use flx-basis instead */
-    height: 35px;
-    display: inline-block; 
-    flex-basis: 6%; /* either this or use width -- flex-basis is for length aka width */
-    /*flex-direction: column; /*used to make the 2 divs in it sit on top eachother*/
-    align-items: center; /* move items inside div to top or bottom-- d4, d9 etc */
-    justify-content: center; /* move items in div to right or left */
-    /*margin: 0.2px; used here to move the boxes close to eachother. */
-    /*padding: 6px; 
-     /*background-color: black; no need as attribute is set with JS */
-  } 
-
   #wholeContainer {
     text-align: center; 
     margin-top: 50px;
