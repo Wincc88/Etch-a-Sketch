@@ -14,16 +14,16 @@
         <button id="newgrid">Click to insert number of squares</button>
     </div>
 
-    <div id="container">
+    <div id="wholeContainer">
     </div>
     
 
     <script>
         console.log("hi");
         
-        const container = document.querySelector("#container");
+        const wholeContainer = document.querySelector("#wholeContainer");
         let n = 16;                               /* manipulate as prompt changing value later. */
-
+        
         for (let i = 0; i < n; i++) {
             const ColContent = document.createElement("div");
             ColContent.classList.add("ColContent");
@@ -33,18 +33,15 @@
                 const RowContent = document.createElement("div");
                 RowContent.classList.add("RowContent");
                 ColContent.appendChild(RowContent);
-                RowContent.setAttribute("style", "background: pink;");    
+                RowContent.setAttribute("style", "background: white;");    
+
             }
-            container.appendChild(ColContent);
+             wholeContainer.appendChild(ColContent);
         } 
-
-       
-
-        
 
         
         const RowContent = document.querySelectorAll(".RowContent");    /*like RockScisPap, QueryselectorAll helped select each div of the many divs*/
-                                                                 /*forEach lopps through all content div displaying events */
+                                                                 /*forEach loops through all content div displaying events */
         RowContent.forEach((RowContent) => {
             
         RowContent.addEventListener("mouseover", () => {
@@ -56,207 +53,87 @@
         });
 
         });
+          
         
-        
-
         const newgrid = document.querySelector("#newgrid");
         newgrid.addEventListener("click", () => {
-                alert("hello");
-                prompt("enter new grid number");
+
+            wholeContainer.replaceChildren();   // removes the previous COlContent which is the container children
+
+                while (true) {
+                    NewsquarePerSide = prompt("Enter new grid number");
+                
+                        if (NewsquarePerSide <= 0 || NewsquarePerSide > 100 || isNaN(NewsquarePerSide)) {
+                            alert("Invalid Entry: Enter a number between 1 and 100.");
+                            NewsquarePerSide;
+                            continue;
+                        }
+                        else {
+                            break;
+                        }
+                }
+                
+                for (let i = 0; i < NewsquarePerSide; i++) {
+                    
+                    const InputSquarecol = document.createElement("div");
+                    InputSquarecol.classList.add("InputSquarecol");
+                    
+                
+                    for (let j = 0; j < NewsquarePerSide; j++) {
+                        const InputSquarerow = document.createElement("div");
+                        InputSquarerow.classList.add("InputSquarerow");
+                        InputSquarecol.appendChild(InputSquarerow);
+                        InputSquarerow.setAttribute("style", "background: green;");    
+                    }
+
+                    wholeContainer.appendChild(InputSquarecol);
+                } 
+
+                const InputSquarerow = document.querySelectorAll(".InputSquarerow"); 
+                                                                 
+                    InputSquarerow.forEach((InputSquarerow) => {
+                        /** 
+                        InputSquarerow.addEventListener("mouseover", () => {
+                            InputSquarerow.setAttribute("style", "background: white;");
+                        });
+                        **/
+                                                                   
+                        InputSquarerow.addEventListener("mousemove", changeDivBackground);
+
+                        function random(number) {
+                            return Math.floor(Math.random() * (number + 1));
+                            }
+                         
+                        function changeDivBackground()  { 
+                            const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+                             
+                        InputSquarerow.style.backgroundColor = rndCol;
+                        //InputSquarerow.style.backgroundColor = "blue";
+                        InputSquarerow.style.opacity = 0.1;
+                        InputSquarerow.removeEventListener("mousemove", changeDivBackground);
+                        }
+                         
+                        
+                        let opacity = [0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+                        
+                        let counter = 0;  //counter helper for multiple clicks
+
+                                           
+                        InputSquarerow.addEventListener("click", darkenOpacity);
+                                      
+                        function darkenOpacity() {
+                            if (counter < opacity.length) {
+                                InputSquarerow.style.opacity = opacity[counter];
+                                counter++;
+                                console.log(counter);
+                                console.log(InputSquarerow.style.opacity);
+                            }
+                        }                  
+                    
+                    });          
         });
-    
 
-
-        /*
-        const container2 = document.querySelector("#container");
-        const content2 = document.createElement("div");
-        content2.classList.add("content2");
-        content2.textContent = "d2";
-        container2.appendChild(content2);
-
-       
-        const container3 = document.querySelector("#container");
-        const content3 = document.createElement("div");
-        content3.classList.add("content3");
-        content3.textContent = "d3";
-        container3.appendChild(content3);
-
-        const container4 = document.querySelector("#container");
-        const content4 = document.createElement("div");
-        content4.classList.add("content4");
-        content4.textContent = "d4";
-        container4.appendChild(content4);
         
-
-        const container5 = document.querySelector("#container");
-        const content5 = document.createElement("div");
-        content5.classList.add("content5");
-        content5.textContent = "d5";
-        container5.appendChild(content5);
-
-       
-        const container6 = document.querySelector("#container");
-        const content6 = document.createElement("div");
-        content6.classList.add("content6");
-        content6.textContent = "d6";
-        container6.appendChild(content6);
-
-        const container7 = document.querySelector("#container");
-        const content7 = document.createElement("div");
-        content7.classList.add("content7");
-        content7.textContent = "d7";
-        container7.appendChild(content7);
-
-        const container8 = document.querySelector("#container");
-        const content8 = document.createElement("div");
-        content8.classList.add("content8");
-        content8.textContent = "d8";
-        container8.appendChild(content8);
-
-        const container9 = document.querySelector("#container");
-        const content9 = document.createElement("div");
-        content9.classList.add("content9");
-        content9.textContent = "d9";
-        container9.appendChild(content9);
-
-        const container10 = document.querySelector("#container");
-        const content10 = document.createElement("div");
-        content10.classList.add("content10");
-        content10.textContent = "d10";
-        container10.appendChild(content10);
-
-        const container11 = document.querySelector("#container");
-        const content11 = document.createElement("div");
-        content11.classList.add("content11");
-        content11.textContent = "d11";
-        container11.appendChild(content11);
-        
-        const container12 = document.querySelector("#container");
-        const content12 = document.createElement("div");
-        content12.classList.add("content12");
-        content12.textContent = "d12";
-        container12.appendChild(content12);
-
-        const container13 = document.querySelector("#container");
-        const content13 = document.createElement("div");
-        content13.classList.add("content12");
-        content13.textContent = "d13";
-        container13.appendChild(content13);
-
-        const container14 = document.querySelector("#container");
-        const content14 = document.createElement("div");
-        content14.classList.add("content14");
-        content14.textContent = "d14";
-        container14.appendChild(content14);
-
-        const container15 = document.querySelector("#container");
-        const content15 = document.createElement("div");
-        content15.classList.add("content15");
-        content15.textContent = "d15";
-        container15.appendChild(content15);
-
-        const container16 = document.querySelector("#container");
-        const content16 = document.createElement("div");
-        content16.classList.add("content16");
-        content16.textContent = "d16";
-        container16.appendChild(content16);
-
-        const container17 = document.querySelector("#container");
-        const content17 = document.createElement("div");
-        content17.classList.add("content17");
-        content17.textContent = "d17";
-        container17.appendChild(content17);
-
-        const container18 = document.querySelector("#container");
-        const content18 = document.createElement("div");
-        content18.classList.add("content18");
-        content18.textContent = "d18";
-        container18.appendChild(content18);
-
-        const container19 = document.querySelector("#container");
-        const content19 = document.createElement("div");
-        content19.classList.add("content19");
-        content19.textContent = "d19";
-        container19.appendChild(content19);
-
-        const container20 = document.querySelector("#container");
-        const content20 = document.createElement("div");
-        content20.classList.add("content20");
-        content20.textContent = "d20";
-        container20.appendChild(content20);
-
-        const container21 = document.querySelector("#container");
-        const content21 = document.createElement("div");
-        content21.classList.add("content21");
-        content21.textContent = "d21";
-        container21.appendChild(content21);
-
-        const container22 = document.querySelector("#container");
-        const content22 = document.createElement("div");
-        content22.classList.add("content22");
-        content22.textContent = "d22";
-        container22.appendChild(content22);
-
-        const container23 = document.querySelector("#container");
-        const content23 = document.createElement("div");
-        content23.classList.add("content23");
-        content23.textContent = "d23";
-        container23.appendChild(content23);
-
-        const container24 = document.querySelector("#container");
-        const content24 = document.createElement("div");
-        content24.classList.add("content24");
-        content24.textContent = "d24";
-        container24.appendChild(content24);
-
-        const container25 = document.querySelector("#container");
-        const content25 = document.createElement("div");
-        content25.classList.add("content25");
-        content25.textContent = "d25";
-        container25.appendChild(content25);
-
-        const container26 = document.querySelector("#container");
-        const content26 = document.createElement("div");
-        content26.classList.add("content26");
-        content26.textContent = "d26";
-        container26.appendChild(content26);
-
-        const container27 = document.querySelector("#container");
-        const content27 = document.createElement("div");
-        content27.classList.add("content27");
-        content27.textContent = "d27";
-        container27.appendChild(content27);
-
-        const container28 = document.querySelector("#container");
-        const content28 = document.createElement("div");
-        content28.classList.add("content28");
-        content28.textContent = "d28";
-        container28.appendChild(content28);
-
-        const container29 = document.querySelector("#container");
-        const content29 = document.createElement("div");
-        content29.classList.add("content29");
-        content29.textContent = "d29";
-        container29.appendChild(content29);
-
-        const container30 = document.querySelector("#container");
-        const content30 = document.createElement("div");
-        content30.classList.add("content30");
-        content30.textContent = "d30";
-        container30.appendChild(content30);
-
-        const container31 = document.querySelector("#container");
-        const content31 = document.createElement("div");
-        content31.classList.add("content31");
-        content31.textContent = "d31";
-        container31.appendChild(content31);
-
-        const container32 = document.querySelector("#container");
-        const content32 = document.createElement("div");
-        content32.classList.add("content32");
-        content32.textContent = "d32";
-        container32.appendChild(content32);
-        */
 
 
 

@@ -34,13 +34,13 @@
      /*background-color: black; no need as attribute is set with JS */
   } 
 
-  #container {
+  #wholeContainer {
     text-align: center; 
     margin-top: 50px;
     /*display: inline-block;*/
   }
 
-  .RowContent {
+  .RowContent, .InputSquarerow {
     width: 20px;
     height: 20px;
     border: 1px solid palevioletred;
@@ -48,7 +48,7 @@
     
   }
 
-  .ColContent {
+  .ColContent, .InputSquarecol {
     width: 20px;
     height: 20px;
     display: inline-block;
