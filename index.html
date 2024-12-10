@@ -17,44 +17,46 @@
     <div id="wholeContainer">
     </div>
     
+    
 
     <script>
       
         const wholeContainer = document.querySelector("#wholeContainer");
-        let n = 16;                               /* manipulate as prompt changing value later. */
+        let n = 16;                               /* manipulate as prompt changing value for part 2. */
         
-        for (let i = 0; i < n; i++) {
-            const ColContent = document.createElement("div");
-            ColContent.classList.add("ColContent");
-           
-            
-            for (let j = 0; j < n; j++) {
-                const RowContent = document.createElement("div");
-                RowContent.classList.add("RowContent");
-                ColContent.appendChild(RowContent);
-                RowContent.setAttribute("style", "background: white;");    
+                for (let i = 0; i < n; i++) {
+                    const ColContent = document.createElement("div");
+                    ColContent.classList.add("ColContent");
+                
+                    
+                    for (let j = 0; j < n; j++) {
+                        const RowContent = document.createElement("div");
+                        RowContent.classList.add("RowContent");
+                        ColContent.appendChild(RowContent);
+                        RowContent.setAttribute("style", "background: white;");    
 
-            }
-             wholeContainer.appendChild(ColContent);
-        } 
+                    }
+                    wholeContainer.appendChild(ColContent);
+                } 
 
         
-        const RowContent = document.querySelectorAll(".RowContent");    /*like RockScisPap, QueryselectorAll helped select each div of the many divs*/
-                                                                 /*forEach loops through all content div displaying events */
-        RowContent.forEach((RowContent) => {
-            
-        RowContent.addEventListener("mouseover", () => {
-            RowContent.setAttribute("style", "background: black;");
-        });
+                    const RowContent = document.querySelectorAll(".RowContent");    /*like RockScisPap, QueryselectorAll helped select each div of the many divs*/
+                                                                                    /*forEach loops through all content div displaying events */
+                         RowContent.forEach((RowContent) => {
+                                
+                            RowContent.addEventListener("mouseover", () => {
+                                RowContent.setAttribute("style", "background: black;");
+                            });
 
-        RowContent.addEventListener("mouseout", () => {
-            RowContent.setAttribute("style", "background: blue;");
-        });
+                            RowContent.addEventListener("mouseout", () => {
+                                RowContent.setAttribute("style", "background: blue;");
+                            });
 
-        });
+                        });
           
         
         const newgrid = document.querySelector("#newgrid");
+        
         newgrid.addEventListener("click", () => {
 
             wholeContainer.replaceChildren();   // removes the previous COlContent which is the container children
@@ -72,8 +74,7 @@
                         }
                 }
                 
-                for (let i = 0; i < NewsquarePerSide; i++) {
-                    
+                for (let i = 0; i < NewsquarePerSide; i++) {                  
                     const InputSquarecol = document.createElement("div");
                     InputSquarecol.classList.add("InputSquarecol");
                     
@@ -82,16 +83,16 @@
                         const InputSquarerow = document.createElement("div");
                         InputSquarerow.classList.add("InputSquarerow");
                         InputSquarecol.appendChild(InputSquarerow);
-                        InputSquarerow.setAttribute("style", "background: green;");    
+                        InputSquarerow.setAttribute("style", "background: green;");                              
                     }
 
-                    wholeContainer.appendChild(InputSquarecol);
+                    wholeContainer.appendChild(InputSquarecol);                  
                 } 
-
+               
                 const InputSquarerow = document.querySelectorAll(".InputSquarerow"); 
-                                                                 
+                                                               
                     InputSquarerow.forEach((InputSquarerow) => {
-                                                                   
+                                                           
                         InputSquarerow.addEventListener("mousemove", changeDivBackground);
 
                         function random(number) {
@@ -106,7 +107,6 @@
                         InputSquarerow.style.opacity = 0.1;
                         InputSquarerow.removeEventListener("mousemove", changeDivBackground);
                         }
-                         
                         
                         let opacity = [0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
                         
@@ -122,10 +122,31 @@
                                 console.log(counter);
                                 console.log(InputSquarerow.style.opacity);
                             }
-                        }                  
-                    
-                    });          
+                        }  
+        
+                    }); 
+
+                    const fadeDiv = document.createElement("div");
+                    fadeDiv.classList.add("fadeDiv");
+                    fadeDiv.textContent = `This is a ${NewsquarePerSide} * ${NewsquarePerSide} div`;
+                    fadeDiv.setAttribute("style", "color: white");
+                    wholeContainer.appendChild(fadeDiv);
+
+                    fadeDiv.addEventListener('mousemove', currenDiv);
+                      function currenDiv() {
+                         wholeContainer.removeChild(fadeDiv);
+                      };
+                        
+
         });
+     
+        
+        
+       
+        
+        
+        
+        
 
         
 

@@ -19,6 +19,7 @@
     
   }
 
+
   .ColContent, .InputSquarecol {
     width: 20px;
     height: 20px;
@@ -26,9 +27,12 @@
     /*flex-direction: row; */
 
   }
-
-
-  
+ 
+  .fadeDiv {
+    font-size: medium;
+    /*color: pink; */
+  }
+ 
   
   
   
